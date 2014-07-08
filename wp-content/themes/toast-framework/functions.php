@@ -66,5 +66,20 @@ if ( ! function_exists('toast_setup') ) {
 }
 
 
+/* ==========================================================================
+5.0 - Toon de meta informatie voor een article
+========================================================================== */
+if ( ! function_exists('toast_post_meta') ) {
+    function toast_post_meta() {
+        echo '<ul class="list-inline entry-meta">';
+
+        if ( get_post_type() === 'post') {
+            // Als het een sticky post is geef dit dan aan
+            if (is_sticky() ) {
+                echo '<li class="meta-featured-post"><i class="fa fa-thumb-tack"></i>' . __('Sticky', 'toast' ) . '</li>';
+            }
+        }
+    }
+}
 
 ?>
