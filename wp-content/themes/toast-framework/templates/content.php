@@ -32,4 +32,26 @@
             ?>
         </p>
     </header>
+    
+    <!-- Article content -->
+    <div class="entry-content">
+        <?php 
+            if (is_search() ) {
+                the_excerpt();
+            } else {
+                the_content( __( 'Lees verder &rarr;', 'toast') );
+
+                wp_link_pages();
+            }
+        ?>    
+    </div>
+
+    <footer class="entry-footer">
+        <?php 
+            // Als we een single pagina hebben en de bio van de auteur bestaat, dan tonen we die
+            echo '<h2>' . __('Geschreven door ', 'toast') . get_the_author() . '</h2>';
+            echo '<p>' . the_author_meta('description') . '</p>';
+        ?>
+    </footer>
+
 </article>
