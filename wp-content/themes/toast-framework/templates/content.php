@@ -49,8 +49,10 @@
     <footer class="entry-footer">
         <?php 
             // Als we een single pagina hebben en de bio van de auteur bestaat, dan tonen we die
-            echo '<h2>' . __('Geschreven door ', 'toast') . get_the_author() . '</h2>';
-            echo '<p>' . the_author_meta('description') . '</p>';
+            if ( is_single() && get_the_author_meta( 'description' ) ) {
+                echo '<h2>' . __('Geschreven door ', 'toast') . get_the_author() . '</h2>';
+                echo '<p>' . the_author_meta('description') . '</p>';
+            }
         ?>
     </footer>
 
