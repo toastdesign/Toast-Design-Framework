@@ -3,20 +3,18 @@
  * content.php
  *
  * Dit is het standaard template voor het tonen van articelen
- *
- *
  */
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <!-- header -->
-    <header class="entry-header">
-        <?php 
-        // Als het article geen password heeft laat dan de afbeelding zien
+    <header class="entry-header"> <?php 
+        // Als het article geen password heeft 
+        //laat dan de afbeelding zien
         if ( has_post_thumbnail() && ! post_password_required() ) : ?>
-            <figure class="entry-thumbnail"><?php the_post_thumnail(); ?></figure>
+            <figure class="entry-thumbnail"><?php the_post_thumbnail(); ?></figure>
         <?php endif;
-
+        
         // Als het een singel pagina is dan laten we de titel zien
         // anders laten we de titel als link zien
         if ( is_single() ) : ?>
@@ -36,7 +34,7 @@
     <!-- Article content -->
     <div class="entry-content">
         <?php 
-            if (is_search() ) {
+            if ( is_search() ) {
                 the_excerpt();
             } else {
                 the_content( __( 'Lees verder &rarr;', 'toast') );
@@ -45,7 +43,8 @@
             }
         ?>    
     </div>
-
+    
+    <!-- Article footer -->
     <footer class="entry-footer">
         <?php 
             // Als we een single pagina hebben en de bio van de auteur bestaat, dan tonen we die
@@ -55,5 +54,4 @@
             }
         ?>
     </footer>
-
 </article>

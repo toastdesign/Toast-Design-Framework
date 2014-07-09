@@ -24,7 +24,7 @@ require_once(FRAMEWORK . '/init.php' );
 3.0 Geef de breedte op van het thema design
 ========================================================================== */
 if ( ! isset( $content_width) ) {
-    $content_width = 960;
+    $content_width = 800;
 }
 
 /* ==========================================================================
@@ -33,7 +33,7 @@ if ( ! isset( $content_width) ) {
 if ( ! function_exists('toast_setup') ) {
     function toast_setup() {
         /* Maak het thema vertaalbaar  ----------- */
-        $lang_dir = THEMEROOT . 'languages';
+        $lang_dir = THEMEROOT . '/languages';
         load_theme_textdomain( 'toast', $lang_dir );
 
         /* Voeg ondersteuning toe voor verschillende post formats  ----------- */
@@ -62,7 +62,7 @@ if ( ! function_exists('toast_setup') ) {
         );
     }   
 
-    add_action('after_theme_setup', 'toast_setup');
+    add_action('after_setup_theme', 'toast_setup');
 }
 
 
@@ -117,6 +117,30 @@ if ( ! function_exists('toast_post_meta') ) {
                 echo '</li>';
             }
         }
+    }
+}
+
+/* ==========================================================================
+6.0 - Toont een navigatie voor vorige en volgende posts/artikelen
+========================================================================== */
+if ( ! function_exists('toast_paging_nav' ) ) {
+    function toast_paging_nav() { ?>
+        <ul>
+            <?php 
+                if ( get_previous_posts_link() ) : ?>
+                <li class="next">
+                    <?php previous_posts_link( __('Nieuwere artikelen &rarr;', 'toast') ) ?>
+                </li>
+                <?php endif;
+            ?>
+            <?php 
+                if ( get_next_posts_link() ) : ?>
+                <li class="previous">
+                    <?php next_posts_link( __('&larr; Oudere artikelen', 'toast') ) ?>
+                </li>
+                <?php endif;
+            ?>
+        </ul> <?php 
     }
 }
 
