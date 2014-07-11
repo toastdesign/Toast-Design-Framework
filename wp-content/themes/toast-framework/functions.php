@@ -24,7 +24,7 @@ require_once(FRAMEWORK . '/init.php' );
 3.0 Geef de breedte op van het thema design
 ========================================================================== */
 if ( ! isset( $content_width) ) {
-    $content_width = 800;
+    $content_width = 960;
 }
 
 /* ==========================================================================
